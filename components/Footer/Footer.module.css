@@ -1,0 +1,27 @@
+.footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  padding: 2rem 0;
+  margin-top: auto;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.text {
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.link {
+  color: #0070f3;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
