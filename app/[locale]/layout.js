@@ -50,6 +50,7 @@ export default async function LocaleLayout({ children, params }) {
         <main style={{ flex: 1 }}>
           {children}
         </main>
+        
         <Footer translations={translations} />
       </body>
     </html>
