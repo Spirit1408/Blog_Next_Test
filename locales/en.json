@@ -1,0 +1,45 @@
+{
+  "header": {
+    "logo": "Mini Blog",
+    "home": "Home",
+    "about": "About"
+  },
+  "footer": {
+    "author": "Blog Author",
+    "rights": "All rights reserved"
+  },
+  "home": {
+    "title": "Latest Posts",
+    "loading": "Loading posts...",
+    "error": "Failed to load posts",
+    "readMore": "Read More",
+    "noPosts": "No posts available"
+  },
+  "post": {
+    "loading": "Loading post...",
+    "error": "Failed to load post",
+    "notFound": "Post not found",
+    "backToHome": "← Back to Home"
+  },
+  "about": {
+    "title": "About Us",
+    "content": "Welcome to our mini blog! This is a multilingual blog built with Next.js, showcasing modern web development practices including Server-Side Rendering (SSR), Static Site Generation (SSG), and internationalization (i18n).",
+    "features": "Features:",
+    "feature1": "Multilingual support (English and Ukrainian)",
+    "feature2": "Server-Side Rendering for the home page",
+    "feature3": "Static Site Generation for individual posts",
+    "feature4": "Responsive design",
+    "feature5": "Modern CSS Modules styling"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "message": "Sorry, the page you are looking for does not exist.",
+    "backToHome": "Go Back Home"
+  },
+  "error": {
+    "title": "Something went wrong!",
+    "message": "An unexpected error occurred. Please try again later.",
+    "retry": "Try Again",
+    "backToHome": "Go Back Home"
+  }
+}
