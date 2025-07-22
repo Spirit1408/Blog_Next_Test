@@ -4,7 +4,7 @@ A multilingual mini-blog built with Next.js 15 and modern web technologies. The 
 
 ## 🚀 Demo
 
-[Live project version on Vercel](https://your-blog-url.vercel.app) *(will be added after deployment)*
+[Live project version on Vercel](https://blog-next-test-delta.vercel.app/)
 
 ## ✨ Features
 
@@ -61,8 +61,8 @@ A multilingual mini-blog built with Next.js 15 and modern web technologies. The 
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/mini-blog.git
-   cd mini-blog
+   git clone https://github.com/Spirit1408/Blog_Next_Test.git
+   cd Blog_Next_Test
    ```
 
 2. **Install dependencies**
