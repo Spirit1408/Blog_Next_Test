@@ -1,18 +1,24 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getTranslations, fetchPost, fetchPosts } from '../../../../lib/translations';
+import { LOCALES } from '../../../../lib/constants';
 import styles from './page.module.css';
 
-export async function generateStaticParams({ params }) {
-  const { locale } = params;
-  
+export async function generateStaticParams() {
   try {
     const posts = await fetchPosts();
     
-    return posts.map((post) => ({
-      locale,
-      id: post.id.toString(),
-    }));
+    const params = [];
+    for (const locale of LOCALES) {
+      for (const post of posts) {
+        params.push({
+          locale,
+          id: post.id.toString(),
+        });
+      }
+    }
+    
+    return params;
   } catch (error) {
     console.error('Error generating static params:', error);
     return [];
@@ -20,7 +26,7 @@ export async function generateStaticParams({ params }) {
 }
 
 export async function generateMetadata({ params }) {
-  const { locale, id } = params;
+  const { locale, id } = await params;
   const translations = await getTranslations(locale);
   
   try {
@@ -38,7 +44,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function PostPage({ params }) {
-  const { locale, id } = params;
+  const { locale, id } = await params;
   const translations = await getTranslations(locale);
   
   let post = null;

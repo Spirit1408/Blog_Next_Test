@@ -3,6 +3,7 @@ import "../globals.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { getTranslations } from "../../lib/translations";
+import { generateLocaleParams } from "../../lib/constants";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export async function generateMetadata({ params }) {
-  const { locale } = params;
+  const { locale } = await params;
   const translations = await getTranslations(locale);
   
   return {
@@ -25,18 +26,15 @@ export async function generateMetadata({ params }) {
 }
 
 export function generateStaticParams() {
-  return [
-    { locale: 'en' },
-    { locale: 'uk' }
-  ];
+  return generateLocaleParams();
 }
 
 export default async function LocaleLayout({ children, params }) {
-  const { locale } = params;
+  const { locale } = await params;
   const translations = await getTranslations(locale);
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         style={{ 
@@ -46,11 +44,9 @@ export default async function LocaleLayout({ children, params }) {
         }}
       >
         <Header locale={locale} translations={translations} />
-        
         <main style={{ flex: 1 }}>
           {children}
         </main>
-        
         <Footer translations={translations} />
       </body>
     </html>

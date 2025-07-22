@@ -1,28 +1,20 @@
 import { NextResponse } from 'next/server';
-
-const locales = ['en', 'uk'];
-const defaultLocale = 'en';
-
-function getLocale(pathname) {
-  const segments = pathname.split('/');
-  const locale = segments[1];
-  return locales.includes(locale) ? locale : null;
-}
+import { LOCALES, DEFAULT_LOCALE } from './lib/constants';
 
 export function middleware(request) {
   const pathname = request.nextUrl.pathname;
   
-  const pathnameHasLocale = locales.some(
+  const pathnameHasLocale = LOCALES.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
   if (pathname === '/') {
-    return NextResponse.redirect(new URL(`/${defaultLocale}`, request.url));
+    return NextResponse.redirect(new URL(`/${DEFAULT_LOCALE}`, request.url));
   }
 
   if (!pathnameHasLocale) {
     return NextResponse.redirect(
-      new URL(`/${defaultLocale}${pathname}`, request.url)
+      new URL(`/${DEFAULT_LOCALE}${pathname}`, request.url)
     );
   }
 

@@ -1,15 +1,14 @@
 import { getTranslations } from '../../../lib/translations';
+import { generateLocaleParams } from '../../../lib/constants';
 import styles from './page.module.css';
 
-export async function generateStaticParams() {
-  return [
-    { locale: 'en' },
-    { locale: 'uk' }
-  ];
+// This is a static page
+export function generateStaticParams() {
+  return generateLocaleParams();
 }
 
 export async function generateMetadata({ params }) {
-  const { locale } = params;
+  const { locale } = await params;
   const translations = await getTranslations(locale);
   
   return {
@@ -19,7 +18,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function AboutPage({ params }) {
-  const { locale } = params;
+  const { locale } = await params;
   const translations = await getTranslations(locale);
 
   return (
@@ -35,7 +34,6 @@ export default async function AboutPage({ params }) {
 
         <div className={styles.section}>
           <h2 className={styles.subtitle}>{translations.about.features}</h2>
-          
           <ul className={styles.featuresList}>
             <li className={styles.feature}>{translations.about.feature1}</li>
             <li className={styles.feature}>{translations.about.feature2}</li>
@@ -47,7 +45,6 @@ export default async function AboutPage({ params }) {
 
         <div className={styles.techStack}>
           <h2 className={styles.subtitle}>Tech Stack</h2>
-          
           <div className={styles.technologies}>
             <span className={styles.tech}>Next.js 15</span>
             <span className={styles.tech}>React 19</span>
